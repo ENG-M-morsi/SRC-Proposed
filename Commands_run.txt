@@ -1,0 +1,50 @@
+pip install Django
+django-admin startproject university_system
+python manage.py makemigrations
+python manage.py migrate
+python manage.py createsuperuser
+cd E:\Works_Programs\uni_project
+python manage.py runserver
+*****stop server*****
+ctrl + c # stop server
+*****add new user*****
+python manage.py createsuperuser
+*****************GitHub************************
+###### ÊäÒíáå
+https://git-scm.com/
+ÊæÕíİå æÊÇßÏ ãä ÇÎÊíÇÑ ÇËäÇÁ ÇáÊæÕíİ Git from the command line and also from 3rd-party software
+ááÊÇßÏ ãä äÒæáå  git --version
+####### ÎØæÇÊ ÇáÑİÚ Çæá ãÑå
+Úãá Respirotiry áÇ ÊÖíİ İíå ãáİ  READme æßĞáß áÇ ÊÚãá Èå gitignore
+ÇäÔÇÁ ãáİÇÊ .gitignore æÚãá ãáİ requirements.txt by using 
+pip freeze > requirements.txt
+##################   .gitignore
+
+# 1. ÊåíÆÉ ÇáãÓÊæÏÚ ÇáãÍáí
+git init
+
+# 2. ÅÖÇİÉ ßá ÇáãáİÇÊ æÇáãÌáÏÇÊ ÇáãæÌæÏÉ
+git add .
+
+git config user.email "your-email@example.com"   # ÇÓÊÎÏã ÈÑíÏß ÇáÅáßÊÑæäí ÇáÍŞíŞí
+git config user.name "Your Name"                 # ÇÓÊÎÏã ÇÓãß
+git commit -m "Initial commit with clean repo"
+
+# 3. Úãá Ãæá ÊÌãíÚÉ (Commit)
+git commit -m "07-08-2026.1"
+
+# 4. ÊÓãíÉ ÇáİÑÚ ÇáÑÆíÓí
+git branch -M main
+
+# 5. ÑÈØå ÈãÓÊæÏÚ ÌíÊåÇÈ (ÇÓÊÈÏá ÇáÑÇÈØ ÈÑÇÈØ ãÓÊæÏÚß ÇáÌÏíÏ)
+git remote add origin https://github.com/ENG-M-morsi/SR.git  or
+git remote set-url origin https://github.com/ENG-M-morsi/SR.git
+##################################################
+git remote add origin https://github.com/ENG-M-morsi/SR_Proposed.git or
+git remote set-url origin https://github.com/ENG-M-morsi/SR_Proposed.git
+# 6. ÇáÑİÚ ÇáäåÇÆí
+git push -u origin main
+###################### ÎØæÇÊ ãÊßÑÑÉ 
+git add .
+git commit -m "ÊÍÏíË ÔÇÔÉ ÚÑÖ ãÌãæÚå ãä ÇáãÓÊÎÏãíä"
+git push    or    git push origin main

@@ -1,0 +1,52 @@
+pip freeze > requirements.txt
+pip install -r requirements.txt
+pip install -r "D:\folder_name\requirements.txt"
+cd E:\Works_Programs\uni_project
+dir
+
+##############################################
+conda create -n sr_env python=3.8.20
+conda activate sr_env
+conda install numpy pandas matplotlib scikit-learn jupyter
+conda install pytorch torchvision torchaudio cpuonly -c pytorch
+conda install opencv -c conda-forge
+python -m ipykernel install --user --name=sr_env --display-name "Python (sr_env)"
+
+conda install numpy pandas matplotlib scikit-learn jupyter
+conda install pytorch torchvision torchaudio cpuonly -c pytorch
+conda install opencv -c conda-forge
+
+
+conda install torch>=1.0.0
+conda install numpy
+conda install scikit-image
+conda install imageio
+conda install matplotlib
+conda install tqdm
+conda install opencv-python>=3.0.0
+conda install openpyxl
+
+
+conda activate sr_env
+conda install ipykernel
+python -m ipykernel install --user --name=sr_env --display-name "Python (sr_env)"
+
+
+conda remove --name sr_env --all
+
+jupyter kernelspec list
+
+jupyter kernelspec uninstall sr_env
+
+
+conda activate sr_env
+conda list
+
+conda activate sr_env
+pip install notebook jupyterlab ipykernel
+
+pip install -r requirements.txt
+
+
+python -c "import cv2; print(cv2.__file__)"
+

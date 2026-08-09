@@ -1,0 +1,4 @@
+python "E:\Ph.D\Image Processing\DHTCUN-main\src\main.py" --dir_data "E:\Ph.D\Image Processing\DHTCUN-main\Dataset" --model dhtcun --scale 4 --rgb_range 1 --n_resblocks 32 --n_feats 256 --res_scale 0.1 --save_results --data_test Set5+Set14+B100+Urban100 --test_only --pre_train "E:\Ph.D\Image Processing\DHTCUN-main\src\experiment\DHTCUN_x4\model\model_best.pt" --cpu 
+
+
+Set5+Set14+B100+Urban100

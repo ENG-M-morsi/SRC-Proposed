@@ -1,0 +1,11 @@
+
+# Example X2 SR
+python "E:\Ph.D\Image Processing\DHTCUN-main\src\main.py" --dir_data "E:\Ph.D\Image Processing\DHTCUN-main\Dataset" --cpu --rgb_range 1  --save_models --lr 1e-4 --decay 200-400-600-800 --epochs 10 --chop --save_results --n_resblocks 32 --n_feats 256 --res_scale 0.1 --batch_size 8 --model dhtcun --scale 2 --patch_size 96 --save DHTCUN_x2 --data_train DIV2K
+
+#########################################################################################################################################################
+python "E:\Ph.D\Image Processing\DHTCUN-main\src\main.py" --dir_data "E:\Ph.D\Image Processing\DHTCUN-main\Dataset"  --model dhtcun --data_test Set5+Set14+B100+Urban100+Manga109  --data_range 801-900 --scale 2 --save HNCT_x2 --pre_train /home/vtrg/Desktop/Jagrati2024/experiment/test/model/model_best.pt --rgb_range 1 --test_only --save_results
+
+#########################################################################################################################################################
+
+python "E:\Ph.D\Image Processing\DHTCUN-main\src\main.py" --dir_data "E:\Ph.D\Image Processing\DHTCUN-main\Dataset"  --cpu --rgb_range 1  --save_models --lr 1e-4 --decay 200-400-600-800  --epochs 2 --chop   --save_results  --n_resblocks 32 --n_feats 256 --res_scale 0.1 --batch_size 8 --model dhtcun --scale 4 --patch_size 96 --save DHTCUN_x4 --data_train DIV2K --data_test DIV2K  --data_range 1-50/801-805 --load DHTCUN_x4
+ 
