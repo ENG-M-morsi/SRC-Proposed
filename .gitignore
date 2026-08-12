@@ -13,9 +13,16 @@
 *.avi
 *.mov
 
-# مجلدات التجارب (إن كانت تحتوي على نتائج ضخمة)
-experiment/
 
 # مجلدات البيانات
 __pycache__/
 *.pyc
+
+# تجاهل ملف config.txt داخل أي مجلد فرعي تحت experiment
+experiment/**/config.txt
+
+# تجاهل مجلد model بالكامل داخل أي مجلد فرعي تحت experiment
+experiment/**/model/
+
+# تجاهل مجلد results-DIV2K بالكامل داخل أي مجلد فرعي تحت experiment
+experiment/**/results-DIV2K/
