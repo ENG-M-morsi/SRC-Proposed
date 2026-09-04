@@ -69,11 +69,17 @@ class checkpoint():
         else:
             self.dir = os.path.join(_exp_dir, args.save)
             if os.path.exists(self.dir):
-                self.log = torch.load(
-                    self.get_path('psnr_log.pt'),
-                    weights_only=False
-                )
-                print('Continue from epoch {}...'.format(len(self.log)))
+                # محاولة تحميل سجل PSNR بشكل آمن
+                psnr_log_path = self.get_path('psnr_log.pt')
+                if os.path.exists(psnr_log_path):
+                    try:
+                        self.log = torch.load(psnr_log_path, weights_only=False)
+                        print('Continue from epoch {}...'.format(len(self.log)))
+                    except (KeyError, RuntimeError, FileNotFoundError) as e:
+                        print(f'⚠️ Failed to load psnr_log.pt: {e}. Starting new log.')
+                        self.log = torch.Tensor()  # بداية جديدة
+                else:
+                    self.log = torch.Tensor()
             else:
                 args.load = ''
 
@@ -96,31 +102,31 @@ class checkpoint():
         self.n_processes = 8
 
         # ================================================================
-        # ✅ تحميل PSNR log مع دعم --resume N
+        # ✅ تحميل PSNR log مع دعم --resume N (باستخدام نفس السجل الآمن)
         # ================================================================
         if args.load:
             psnr_log_path = self.get_path('psnr_log.pt')
             if os.path.exists(psnr_log_path):
-                full_log = torch.load(psnr_log_path, weights_only=False)
+                try:
+                    full_log = torch.load(psnr_log_path, weights_only=False)
+                except (KeyError, RuntimeError, FileNotFoundError) as e:
+                    print(f'⚠️ Failed to load full psnr_log.pt: {e}. Using existing log.')
+                    full_log = self.log  # نستخدم ما تم تحميله سابقًا (أو فارغ)
 
                 if args.resume == -1:
                     if len(self.log) == 0:
                         self.log = full_log
-
                 elif args.resume > 0:
-                    n = args.resume -1
+                    n = args.resume - 1
                     if len(full_log) >= n:
                         self.log = full_log[:n]
                     else:
                         self.log = full_log
-                    if os.getpid() == os.getpid():
-                        print('Resuming from epoch {} — log has {} epochs.'.format(
-                            n, len(self.log)))
-                        if len(self.log) > 0:
-                            best_val = self.log[:, 0, 0].max().item()
-                            best_ep  = self.log[:, 0, 0].argmax().item() + 1
-                            print('Best PSNR so far: {:.3f} dB @ epoch {}'.format(
-                                best_val, best_ep))
+                    print('Resuming from epoch {} — log has {} epochs.'.format(n, len(self.log)))
+                    if len(self.log) > 0:
+                        best_val = self.log[:, 0, 0].max().item()
+                        best_ep = self.log[:, 0, 0].argmax().item() + 1
+                        print('Best PSNR so far: {:.3f} dB @ epoch {}'.format(best_val, best_ep))
 
     def get_path(self, *subdir):
         return os.path.join(self.dir, *subdir)
